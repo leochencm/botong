@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="账单管理"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x13"
+            android:gravity="center"
+            android:text="消费记录"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/y11"
+        android:checkedButton="@+id/daizhifu"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/daizhifu"
+            android:layout_width="@dimen/x68"
+            android:layout_height="@dimen/x28"
+            android:layout_weight="1"
+            android:background="@drawable/item_other_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="待支付"
+            android:textColor="@color/ziti"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/yizhifu"
+            android:layout_width="@dimen/x68"
+            android:layout_height="@dimen/x28"
+            android:layout_weight="1"
+            android:background="@drawable/item_other_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="已支付"
+            android:textColor="@color/ziti"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/swipe_target"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x11"
+        android:layout_marginTop="@dimen/y11"
+        android:layout_marginRight="@dimen/x11"
+        android:clipToPadding="false"
+        android:fadeScrollbars="true"
+        android:scrollbars="vertical" />
+
+
+</LinearLayout>

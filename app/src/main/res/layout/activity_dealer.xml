@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dealer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical"
+    tools:context="com.botongglcontroller.activity.DealerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="经销商权限"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_lock"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginTop="@dimen/y7"
+        android:background="#fff">
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/btn_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:layout_marginRight="@dimen/x11" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="锁机开关"
+            android:textColor="#262626"
+            android:textSize="@dimen/y27" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginTop="@dimen/y7"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:text="设置锁机宽限天数"
+            android:textColor="#262626"
+            android:textSize="@dimen/y27" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/x22"
+                android:gravity="center_vertical"
+                android:text="date" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/x12"
+                android:src="@mipmap/arrow_right" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginTop="@dimen/y7"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:text="设置密码"
+            android:textColor="#262626"
+            android:textSize="@dimen/y27" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/x12"
+            android:src="@mipmap/arrow_right" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginTop="@dimen/y7"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:text="设置时间"
+            android:textColor="#262626"
+            android:textSize="@dimen/y27" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x12"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x11"
+                android:src="@mipmap/arrow_right" />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/y31"-->
+    <!--android:layout_marginTop="@dimen/y7"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="@dimen/x13"-->
+    <!--android:text="锁机天数"-->
+    <!--android:textColor="#262626"-->
+    <!--android:textSize="15sp" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginRight="@dimen/x12"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<TextView-->
+    <!--android:layout_marginLeft="@dimen/x11"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="16sp"-->
+    <!--android:id="@+id/data"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/temperature"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/y31"-->
+    <!--android:layout_marginTop="@dimen/y7"-->
+    <!--android:background="#fff">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginRight="@dimen/x12"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<TextView-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="16sp"-->
+    <!--android:id="@+id/txt_temperature"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent" />-->
+    <!--<ImageView-->
+    <!--android:layout_marginLeft="@dimen/x11"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:src="@mipmap/arrow_right" />-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="13dp"-->
+    <!--android:text="温标定一"-->
+    <!--android:textColor="#262626"-->
+    <!--android:textSize="15sp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_marginStart="13dp"-->
+    <!--android:id="@+id/textView3" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/temperature2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/y31"-->
+    <!--android:layout_marginTop="@dimen/y7"-->
+    <!--android:background="#fff">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="@dimen/x13"-->
+    <!--android:text="温标定二"-->
+    <!--android:textColor="#262626"-->
+    <!--android:textSize="15sp" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginRight="@dimen/x12"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<TextView-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="16sp"-->
+    <!--android:id="@+id/txt_temperature2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent" />-->
+    <!--<ImageView-->
+    <!--android:layout_marginLeft="@dimen/x11"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:src="@mipmap/arrow_right" />-->
+    <!--</LinearLayout>-->
+
+    <!--</RelativeLayout>-->
+</LinearLayout>

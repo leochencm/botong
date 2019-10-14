@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x30"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="工作网络环境设置"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/y33"
+        android:background="#fff">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="#aaaaaa" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x11"
+            android:src="@mipmap/wifi" />
+
+        <EditText
+            android:id="@+id/edt_wifiname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x39"
+            android:background="@null"
+            android:hint="WIFI名称"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_setting"
+            android:layout_width="@dimen/x74"
+            android:layout_height="@dimen/x26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:layout_marginRight="@dimen/x13"
+            android:background="@drawable/bg_edittext_normal"
+            android:gravity="center"
+            android:text="选择Wifi"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y33"
+        android:layout_marginTop="@dimen/y10"
+        android:background="#fff">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="#aaaaaa" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x11"
+            android:src="@mipmap/lock" />
+
+        <EditText
+            android:id="@+id/edt_wifipwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x39"
+            android:background="@null"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:maxLength="24"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x12"
+            android:background="@drawable/showpwd"
+            android:button="@null" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginTop="@dimen/y10"
+        android:text="注：仅在与锅炉wifi连接时可操作" />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="@dimen/x299"
+        android:layout_height="@dimen/y31"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/btn_yuanjiao"
+        android:text="确定"
+        android:textColor="#fafafa"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

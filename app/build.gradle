@@ -1,0 +1,80 @@
+
+
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'bt123123'
+            storeFile file('F:/@botongback/appkey/btapp.jks')
+            storePassword 'bt123123'
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.botongglcontroller"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 15
+        versionName "2.07"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "6098acaf2236afd4c3e067e1", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def fileName = "botong" + "-v" + defaultConfig.versionName + ".apk";
+            //output.outputFile = new File(output.outputFile.parent, defaultConfig.applicationId + "-" + buildType.name + "-v" +
+            //  defaultConfig.versionName + "-" + defaultConfig.versionCode + ".apk");
+            output.apkData.outputFileName = fileName
+        }
+    }
+    productFlavors {
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('libs/framwork.jar')
+    implementation project(':lemonhello')
+    implementation project(':lemonbubble')
+    implementation files('libs/glide-3.7.0.jar')
+    implementation files('libs/zxing.jar')
+    implementation project(':sqqswitchbutton')
+    implementation 'com.kyleduo.switchbutton:library:1.4.4'
+    implementation files('libs/alipaySdk-20170922.jar')
+    implementation 'com.android.support:design:27.0.0'
+    implementation files('libs/android-viewbadger.jar')
+    implementation project(':onenet-sdk')
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'cn.jiguang.sdk:jpush:3.3.0'
+    // 此处以JPush 3.1.7 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.0.1'
+}

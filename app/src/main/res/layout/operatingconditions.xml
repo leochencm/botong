@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:counter="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:scaleType="fitXY"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="运行工况"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/txt_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x13"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/y31"-->
+            <!--android:layout_marginTop="@dimen/y7"-->
+            <!--android:background="#fff">-->
+            <!--<com.kyleduo.switchbutton.SwitchButton-->
+            <!--android:id="@+id/swbt_1"-->
+            <!--style="@style/SwitchButtonStyle"-->
+            <!--android:checked="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true" />-->
+            <!--</RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageback"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_alignParentTop="true"
+
+                    android:layout_marginTop="0dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@mipmap/analog_bak" />
+
+                <ImageView
+                    android:id="@+id/imagezhizhen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@mipmap/zhizhen" />
+
+                <ImageView
+                    android:id="@+id/imagezhizhens"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@mipmap/zhizhens" />
+
+                <TextView
+                    android:id="@+id/texttemp0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="50px"
+                    android:text="0℃"
+                    android:textSize="@dimen/x20" />
+
+                <TextView
+                    android:id="@+id/texttemp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    android:text="0℃"
+                    android:textSize="@dimen/x20" />
+
+                <TextView
+                    android:id="@+id/texttemp2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="50px"
+                    android:text="0℃"
+                    android:textSize="@dimen/x20" />
+
+                <TextView
+                    android:id="@+id/txt_wendu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageback"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="fill_vertical"
+                    android:gravity="center_horizontal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/actionsheet_blue"
+                    android:textSize="@dimen/x25"
+                    counter:text="22" />
+
+                <View
+                    android:id="@+id/strut"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x70"
+                android:layout_marginTop="@dimen/y10"
+                android:background="#fff">
+                <!--<com.kyleduo.switchbutton.SwitchButton-->
+                <!--style="@style/SwitchButtonStyle"-->
+                <!--android:id="@+id/btn_remotelock"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="@dimen/x11"-->
+                <!--android:layout_margin="10dp"/>-->
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="开机开关"
+                    android:textColor="#262626"
+                    android:textSize="15sp" />
+
+                <CheckBox
+                    android:id="@+id/btn_remotelock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x22"
+                    android:background="@drawable/kaiguan_selector"
+                    android:button="@null" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x70"
+                android:layout_marginTop="@dimen/y10"
+                android:background="#fff">
+                <!--<com.kyleduo.switchbutton.SwitchButton-->
+                <!--style="@style/SwitchButtonStyle"-->
+                <!--android:id="@+id/btn_operation"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="@dimen/x11"-->
+                <!--android:layout_margin="10dp"/>-->
+                <CheckBox
+                    android:id="@+id/btn_operation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x22"
+                    android:background="@drawable/kaiguan_selector"
+                    android:button="@null" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="运行开关"
+                    android:textColor="#262626"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x70"
+                android:layout_marginTop="@dimen/y10"
+                android:background="#fff">
+                <!--<com.kyleduo.switchbutton.SwitchButton-->
+                <!--style="@style/SwitchButtonStyle"-->
+                <!--android:id="@+id/btn_shoudong"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="@dimen/x11"-->
+                <!--android:layout_margin="10dp"/>-->
+                <CheckBox
+                    android:id="@+id/btn_shoudong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x22"
+                    android:background="@drawable/kaiguan_selector"
+                    android:button="@null" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="手动开关"
+                    android:textColor="#262626"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y85"
+                android:layout_marginTop="@dimen/y10"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_yc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x9"
+                        android:src="@mipmap/abnormal" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="异常"
+                            android:textColor="#262626"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="异常信息"
+                            android:textColor="#999999"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_yichang"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_yichang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x12"
+                        android:src="@mipmap/arrow_down" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#aaaaaa" />
+
+            <ListView
+                android:id="@+id/lv_yichang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#00000000"
+                android:dividerHeight="0dip"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y85"
+                android:layout_marginTop="@dimen/y7"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_zycs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x9"
+                        android:src="@mipmap/important_canshu" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="重要参数"
+                            android:textColor="#262626"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="点击进入参数列表"
+                            android:textColor="#999999"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_zycs"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/img_zycs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x12"
+                        android:src="@mipmap/arrow_down" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#aaaaaa" />
+
+            <ListView
+                android:id="@+id/lv_zycs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y20"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:id="@+id/update_version_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y85"
+                android:layout_marginTop="@dimen/y10"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_gj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x9"
+                        android:src="@mipmap/update_version" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="固件版本"
+                            android:textColor="#262626"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/guolu_version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#999999"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/update_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/x12"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="NEW"
+                        android:textColor="@color/red"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/version_update"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y50"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x9"
+                    android:layout_marginRight="@dimen/x40"
+                    android:text="最新版本号："
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/new_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x12"
+                    android:textColor="@color/red" />
+
+                <Button
+                    android:id="@+id/update_button"
+                    android:layout_width="80dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="@drawable/button_red"
+                    android:text="升级"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

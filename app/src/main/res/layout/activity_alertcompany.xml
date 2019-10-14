@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="修改公司名称"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edt_company"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/x39"
+        android:background="@null"
+        android:hint="请输入公司名称"
+        android:textSize="@dimen/x28" />
+
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="@dimen/x299"
+        android:layout_height="@dimen/y50"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/btn_yuanjiao"
+        android:text="确定"
+        android:textColor="#fafafa"
+        android:textSize="@dimen/x30" />
+
+</LinearLayout>

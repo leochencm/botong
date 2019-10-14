@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.botongglcontroller">
+
+    <!-- Required -->
+    <permission
+        android:name="com.botongglcontroller.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+
+    <uses-permission android:name="com.botongglcontroller.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-permission android:name="com.example.dell.imooc_jpushdemo.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+
+        <!-- Rich push 核心功能 since 2.0.6 -->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.botongglcontroller" />
+            </intent-filter>
+        </activity>
+        <!--apk下载-->
+        <service android:name="com.botongglcontroller.Service.Downloadservice" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.botongglcontroller.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <!-- Required SDK 核心功能 -->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.JCommonService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <!--3.09核心功能-->
+        <provider
+            android:name="cn.jpush.android.service.DataProvider"
+            android:authorities="com.botongglcontroller.DataProvider"
+            android:exported="false"
+            android:process=":pushcore" />
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="com.botongglcontroller" />
+            </intent-filter>
+        </service>
+        <provider
+            android:name="cn.jpush.android.service.DownloadProvider"
+            android:authorities="com.botongglcontroller.DownloadProvider"
+            android:exported="true" />
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!-- Required  显示通知栏 -->
+                <category android:name="com.botongglcontroller" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name="com.botongglcontroller.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MyReceiver" />
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.botongglcontroller" />
+            </intent-filter>
+        </receiver>
+        <!-- User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调-->
+        <receiver android:name="com.botongglcontroller.MyJPushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="com.botongglcontroller"></category>
+            </intent-filter>
+        </receiver>
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="6098acaf2236afd4c3e067e1" /> <!-- </>值来自开发者平台取得的AppKey -->
+
+        <activity android:name="com.botongglcontroller.activity.LoginActivity"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.WelcomeActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.botongglcontroller.activity.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.ForgetpwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.GuolulinkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.SetSellerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.test"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.SellerBoilersListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.AlertteltphonenumOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.AlertteltphonenumTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.botongglcontroller.activity.AlertcompanyActivity"
+            android:label="@string/title_activity_alertcompany"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.botongglcontroller.activity.AlertAdressActivity"
+            android:label="@string/title_activity_alert_adress"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.botongglcontroller.activity.AlertcontactnameActivity" />
+        <activity android:name="com.botongglcontroller.activity.MipcaActivityCapture" />
+        <activity android:name="com.botongglcontroller.activity.ParameterdisplayActivity" />
+        <activity
+            android:name="com.botongglcontroller.activity.OperatingconditionsActivity"
+            android:launchMode="singleTask" />
+        <activity android:name="com.botongglcontroller.activity.SettingcanshuActivity" />
+        <activity android:name="com.botongglcontroller.activity.AlertLinkpwdActivity" />
+        <activity android:name="com.botongglcontroller.activity.AlertpwdActivity" />
+        <activity android:name="com.botongglcontroller.activity.WifienvironmentActivity"></activity>
+        <activity android:name="com.botongglcontroller.activity.BindGuoluActivity" />
+        <!--<activity android:name=".activity.LinkGuoluActivity" />-->
+        <activity android:name="com.botongglcontroller.activity.DealerActivity" />
+        <activity android:name="com.botongglcontroller.Fragment.GuolulistActivity" />
+        <activity android:name="com.botongglcontroller.activity.UnlockActivity" />
+        <activity android:name="com.botongglcontroller.activity.NewsItemActivity" />
+        <activity android:name="com.botongglcontroller.activity.SwitchActivity" />
+        <activity
+            android:name="com.botongglcontroller.activity.WifiListActivity"
+            android:label="@string/title_activity_wifi_list"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.botongglcontroller.activity.ForhelpActivity" />
+        <activity android:name="com.botongglcontroller.activity.BillmanagementActivity" />
+        <activity android:name="com.botongglcontroller.activity.OrderDetailsActivity" />
+        <activity android:name="com.botongglcontroller.activity.ChargestandardActivity"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.ForhelpListActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.ForhelpInfoActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.NewsSelectActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.botongglcontroller.activity.ForhelpDealActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <!-- OneNET product api-key -->
+        <meta-data
+            android:name="com.chinamobile.iot.onenet.APP-KEY"
+            android:value="Your OneNET product api-key here" />
+
+        <!-- OneNET api scheme -->
+        <meta-data
+            android:name="com.chinamobile.iot.onenet.SCHEME"
+            android:value="https" />
+
+        <!-- OneNET server host -->
+        <meta-data
+            android:name="com.chinamobile.iot.onenet.HOST"
+            android:value="api.heclouds.com" />
+
+        <!-- amap key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4e2fe593c634eadd057ce8da84f3d638" />
+    </application>
+
+</manifest>

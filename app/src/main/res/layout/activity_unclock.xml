@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="完全解锁"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:background="#fff">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="#aaaaaa" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x11"
+            android:src="@mipmap/lock" />
+
+        <EditText
+            android:id="@+id/edt_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x39"
+            android:background="@null"
+            android:hint="解锁密码"
+            android:inputType="textPassword"
+            android:textSize="@dimen/x28" />
+
+        <CheckBox
+            android:id="@+id/cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x12"
+            android:background="@drawable/showpwd"
+            android:button="@null" />
+    </RelativeLayout>
+
+
+    <!--<TextView-->
+    <!--android:layout_marginTop="@dimen/y10"-->
+    <!--android:layout_marginLeft="@dimen/x10"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="注：仅在与锅炉wifi连接时可操作"-->
+    <!--/>-->
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="@dimen/x299"
+        android:layout_height="@dimen/y50"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/btn_yuanjiao"
+        android:text="确定"
+        android:textColor="#fafafa"
+        android:textSize="@dimen/x30" />
+
+
+</LinearLayout>

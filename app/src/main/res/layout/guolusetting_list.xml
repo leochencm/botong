@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginRight="@dimen/x12"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_para"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="报警"
+                android:textSize="@dimen/x28" />
+
+            <!--<ImageView-->
+            <!--android:id="@+id/img_para"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:src="@mipmap/alarm" />-->
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/btn_para"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x11"
+                android:background="@drawable/kaiguan_selector"
+                android:button="@null" />
+            <!--<com.kyleduo.switchbutton.SwitchButton-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:id="@+id/btn_para"-->
+            <!--style="@style/SwitchButtonStyle2"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/x12"-->
+            <!--/>-->
+            <LinearLayout
+                android:id="@+id/ll_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x12"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:id="@+id/txt_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/x7"
+                    android:gravity="center"
+                    android:textColor="#a6a6a6"
+                    android:textSize="@dimen/y27" />
+
+                <TextView
+                    android:id="@+id/paraunit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/x7"
+                    android:gravity="center"
+                    android:textColor="#a6a6a6"
+                    android:textSize="@dimen/y27" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
