@@ -94,6 +94,8 @@ public class HomemanageActivity extends Fragment {
                         .setItemViewProvider(new MyViewProvider())
                         .setOnScrolledListener(new ScrollPickerAdapter.OnScrollListener() {
                             @Override
+
+
                             public void onScrolled(View currentItemView) {
                                 DealerList dl = (DealerList) currentItemView.getTag();
                                 if (dl != null) {
