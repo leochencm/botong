@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#f7f7f7"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:background="#252525">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x13"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="切换网络工作环境"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_marginLeft="@dimen/x22">
+
+        <RadioButton
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="切换到AP模式"
+            android:textSize="@dimen/x25" />
+
+        <RadioButton
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="切换到路由器模式"
+            android:textSize="@dimen/x25" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="@dimen/x299"
+        android:layout_height="@dimen/y45"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/btn_yuanjiao"
+        android:text="确定"
+        android:textColor="#fafafa"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

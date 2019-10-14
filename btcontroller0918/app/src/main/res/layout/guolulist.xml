@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#f7f7f7"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x72"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="#252525">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="锅炉列表"
+            android:textColor="#fff"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:id="@+id/img_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:src="@mipmap/plus" />
+    </RelativeLayout>
+    <com.botongglcontroller.view.PullToRefreshView
+        android:id="@+id/system_main_pull_refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+        <ListView
+            android:layout_weight="1"
+            android:id="@+id/lv_guolu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.botongglcontroller.view.PullToRefreshView>
+
+    <!--<ListView-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/lv_guolu"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="#aaaaaa" />
+
+        <RadioGroup
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/y10">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/home_home"
+                android:gravity="center"
+                android:text="首页"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/rb_guolu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/guolu_guolu"
+                android:gravity="center"
+                android:text="锅炉列表"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/rb_news"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/news_news"
+                android:gravity="center"
+                android:text="消息列表"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/rb_suggestion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/sug_sug"
+                android:gravity="center"
+                android:text="意见反馈"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/rb_personal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/per_per"
+                android:gravity="center"
+                android:text="个人中心"
+                android:textSize="11sp" />
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

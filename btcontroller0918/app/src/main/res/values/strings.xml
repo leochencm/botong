@@ -1,0 +1,42 @@
+﻿<resources>
+    <string name="app_name">博通电子V2</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_alertcompany">AlertcompanyActivity</string>
+    <string name="title_activity_alert_adress">AlertAdressActivity</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="loading">正在加载...</string>
+
+    <string name="insert_card">插入卡</string>
+    <string name="down_fail">下载失败</string>
+    <string name="is_downing">正在下载</string>
+    <string name="down_sucess">下载成功</string>
+    <string name="title_activity_wifi_list">WifiListActivity</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">释放立即刷新</string>
+    <string name="pushmsg_center_load_more_ongoing_text">正在加载中</string>
+<string name="tag_hint">Tag can be number, alphabet, underscore, Chinese. Use , to split many tags.</string>
+    
+<string name="alias_hint">Alias can be number, alphabet, underscore, Chinese.</string>
+    
+<string name="mobilenumber_hint">The phone number can only start with a "+" or a number,other can only contain "-" and Numbers</string>
+    <string name="style_hint">style should be number</string>
+    
+<string name="error_style_empty">style cannot be empty</string>
+    
+<string name="error_alias_empty">alias cannot be empty</string>
+    
+<string name="error_tag_empty">tag cannot be empty</string>
+    
+<string name="error_tag_gs_empty">Invalid format</string>
+    
+<string name="mobilenumber_empty_guide">will clear last set phone number</string>
+    
+<string name="error_network">Failed to init due to network exception.</string>
+    
+<string name="logining">Running in background. Please see log.</string>
+    
+<string name="setting_su">Succeed to set</string>
+    <string name="linkguolu">链接锅炉</string>
+    <string name="unbindingguolu">解绑锅炉</string>
+    <string name="textview">TextView</string>
+</resources>

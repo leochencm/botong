@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lLayout_bg"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/edt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edittext_normal"
+        android:hint="输入修改的值！"
+        android:inputType="number"
+        android:maxLength="9"
+        android:paddingLeft="@dimen/x12"
+        android:textSize="@dimen/x28" />
+
+    <EditText
+        android:visibility="gone"
+       android:layout_marginTop="@dimen/y5"
+        android:id="@+id/edt_msg2"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_edittext_normal"
+        android:layout_height="43dp"
+        android:paddingLeft="@dimen/x12"
+        android:inputType="numberPassword"
+        android:maxLength="9"
+        android:hint="输入修改的值！" />
+
+
+</LinearLayout>
