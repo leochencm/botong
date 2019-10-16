@@ -16,8 +16,8 @@ android {
         applicationId "com.botongglcontroller"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 15
-        versionName "2.07"
+        versionCode 16
+        versionName "2.08"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -62,19 +62,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.kyleduo.switchbutton:library:1.4.4'
+    implementation 'com.android.support:design:27.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'cn.jiguang.sdk:jpush:3.3.0'
+    implementation 'cn.jiguang.sdk:jcore:2.0.1'
     implementation files('libs/framwork.jar')
     implementation project(':lemonhello')
     implementation project(':lemonbubble')
+    implementation project(':sqqswitchbutton')
     implementation files('libs/glide-3.7.0.jar')
     implementation files('libs/zxing.jar')
-    implementation project(':sqqswitchbutton')
-    implementation 'com.kyleduo.switchbutton:library:1.4.4'
     implementation files('libs/alipaySdk-20170922.jar')
-    implementation 'com.android.support:design:27.0.0'
     implementation files('libs/android-viewbadger.jar')
     implementation project(':onenet-sdk')
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'cn.jiguang.sdk:jpush:3.3.0'
     // 此处以JPush 3.1.7 版本为例。
-    implementation 'cn.jiguang.sdk:jcore:2.0.1'
 }

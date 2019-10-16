@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
@@ -340,9 +342,22 @@ public class GuolulistActivity extends BaseActivity implements
 
     }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    showLoadingDialog();
+                    getDate();
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
     private void CheckNetWork() {
         AjaxParams params = new AjaxParams();
-        MyApplication.http.configTimeout(2000);
+        MyApplication.http.configTimeout(4000);
         MyApplication.http.post(Api.TestNetWork, params, new AjaxCallBack<Object>() {
             @Override
             public void onSuccess(Object o) {
@@ -354,8 +369,11 @@ public class GuolulistActivity extends BaseActivity implements
                     if (object.getString("resultcode").equals("0")) {
                         MyApplication.sp.setnetWorkState("1");
                         //mgr.clearboiler();
-                        showLoadingDialog();
-                        getDate();
+                        Message msg = new Message();
+                        msg.what = 1;
+                        msg.obj = "获取成功";
+                        handler.sendMessage(msg);
+
                     } else {
                         query();
                     }
@@ -373,7 +391,6 @@ public class GuolulistActivity extends BaseActivity implements
         });
 
     }
-
     private void getDeviceItems() {
         Map<String, String> urlParams = new HashMap<>();
         for (int i = 0; i < list.size(); i++)
@@ -428,6 +445,7 @@ public class GuolulistActivity extends BaseActivity implements
             params.put("screatword", UserHelp.getPosttime());
             params.put("sign", MD5Utils.encode(MD5Utils.encode(MyApplication.sp.GetScreatMsg()) + UserHelp.dateToStamp(UserHelp.getPosttime())));
             params.put("account", MyApplication.sp.GetMobile());
+            MyApplication.http.configTimeout(40000);
             MyApplication.http.post(Api.GetBoilers, params, new AjaxCallBack<Object>() {
                 @Override
                 public void onSuccess(Object o) {

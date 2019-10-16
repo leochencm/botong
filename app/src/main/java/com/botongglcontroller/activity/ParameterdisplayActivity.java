@@ -192,12 +192,12 @@ public class ParameterdisplayActivity extends BaseActivity {
             params.put("sign", MD5Utils.encode(MD5Utils.encode(MyApplication.sp.GetScreatMsg()) + UserHelp.dateToStamp(UserHelp.getPosttime())));
             params.put("serialnumber", MyApplication.sp.GetSerialnumber());
             Log.i("params", params.toString());
-            showLoadingDialog();
+            //showLoadingDialog();
             MyApplication.http.post(Api.GetBoilersPara, params, new AjaxCallBack<Object>() {
                 @Override
                 public void onSuccess(Object o) {
                     super.onSuccess(o);
-                    hideLoadingDialog();
+                    // hideLoadingDialog();
                     Log.i("canshu", o.toString());
                     try {
                         JSONObject object = new JSONObject(o.toString());
@@ -229,7 +229,7 @@ public class ParameterdisplayActivity extends BaseActivity {
                 @Override
                 public void onFailure(Throwable t, String strMsg) {
                     super.onFailure(t, strMsg);
-                    hideLoadingDialog();
+                    //hideLoadingDialog();
                 }
             });
         } catch (ParseException e) {

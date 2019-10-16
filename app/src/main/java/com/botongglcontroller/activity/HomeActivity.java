@@ -118,7 +118,7 @@ public class HomeActivity extends BaseActivity {
         HomemanageActivity homemanger = new HomemanageActivity();
         FragmentAdapter pageAdapter = new FragmentAdapter(getSupportFragmentManager());
         pageAdapter.addFragment(homemain);
-        if (MyApplication.sp.getParentTel() != "") pageAdapter.addFragment(homemanger);
+        // if (MyApplication.sp.getParentTel() != "") pageAdapter.addFragment(homemanger);
         vpager.setAdapter(pageAdapter);
         vpager.addOnPageChangeListener(onPageChangeListener);
     }

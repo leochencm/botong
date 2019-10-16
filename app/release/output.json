@@ -6,14 +6,14 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 15,
-      "versionName": "2.07",
+      "versionCode": 16,
+      "versionName": "2.08",
       "enabled": true,
-      "outputFile": "botong-v2.07.apk",
+      "outputFile": "botong-v2.08.apk",
       "fullName": "release",
       "baseName": "release"
     },
-    "path": "botong-v2.07.apk",
+    "path": "botong-v2.08.apk",
     "properties": {}
   }
 ]
