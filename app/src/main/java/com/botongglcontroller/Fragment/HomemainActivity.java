@@ -106,7 +106,7 @@ public class HomemainActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MipcaActivityCapture.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
             }
         });
@@ -159,11 +159,6 @@ public class HomemainActivity extends Fragment {
         // initListener();
         initData();
         return rootview;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void getBadgeView() {
@@ -257,5 +252,27 @@ public class HomemainActivity extends Fragment {
             e.printStackTrace();
         }
 
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case SCANNIN_GREQUEST_CODE:
+                if (resultCode == -1) {
+                    Bundle bundle = data.getExtras();
+                    //显示扫描到的内容
+                    Log.i("扫描", bundle.getString("result"));
+                    Log.i("扫描", MyApplication.sp.GetIdentity());
+                    bundle.putString("result", bundle.getString("result"));
+                    if (MyApplication.sp.GetIdentity().equals("seller")) {
+                        String[] info = bundle.getString("result").split("\\s+");
+                        bundle.putString("serialnumber", info[0].toString());
+                        bundle.putString("name", info[1].substring(1, info[1].length() - 1));
+                        Intents.getIntents().Intent(getActivity(), GuolulinkActivity.class, bundle);
+                    } else if (MyApplication.sp.GetIdentity().equals("user")) {
+                        Intents.getIntents().Intent(getActivity(), BindGuoluActivity.class, bundle);
+                    }
+                }
+                break;
+        }
     }
 }

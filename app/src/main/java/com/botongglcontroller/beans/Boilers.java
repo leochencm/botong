@@ -73,13 +73,13 @@ public class Boilers implements Serializable {
         this.wifipwd = wifipwd;
     }
 
-    public ArrayList getPara() {
-        return para;
-    }
-
-    public void setPara(ArrayList para) {
-        this.para = para;
-    }
+//    public ArrayList getPara() {
+//        return para;
+//    }
+//
+//    public void setPara(ArrayList para) {
+//        this.para = para;
+//    }
 
     public String getImage() {
         return image;

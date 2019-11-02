@@ -1,5 +1,6 @@
 package com.botongglcontroller.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -298,6 +299,16 @@ public class OperatingconditionsActivity extends BaseActivity {
      * The Intention.
      */
     String intention = "";//判断是哪个广播
+
+    /**
+     * 7002标志位
+     */
+    private String flag = "0";
+
+    /**
+     * streamid
+     */
+    String[] streamId;
     /**
      * The Mytr.
      */
@@ -365,6 +376,7 @@ public class OperatingconditionsActivity extends BaseActivity {
     /**
      * The Handler.
      */
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             // 要做的事情
@@ -587,7 +599,7 @@ public class OperatingconditionsActivity extends BaseActivity {
         // mDegree.setAutoFormat(false);
         // mDegree.setAutoStart(true);
         Intent it = getIntent();
-        list_para = (ArrayList<BoilersPara>) it.getSerializableExtra("boiler");
+//        list_para = (ArrayList<BoilersPara>) it.getSerializableExtra("boiler");
         serialnumber = it.getStringExtra("serialnumber");
         mDevice = it.getStringExtra("oid");
         apikey = it.getStringExtra("apikey");
@@ -652,8 +664,9 @@ public class OperatingconditionsActivity extends BaseActivity {
 //                        getCnshu("");
 //                    }
 //                }).start();
-                showLoadingDialog();
-                handler.postDelayed(runnable1, 2000); // 延迟2秒，;
+                getBoilerPara();
+//                showLoadingDialog();
+//                handler.postDelayed(runnable1, 2000); // 延迟2秒，;
 //                task=new TimerTask() {
 //                    @Override
 //                    public void run() {
@@ -677,6 +690,139 @@ public class OperatingconditionsActivity extends BaseActivity {
 
         }
 
+    }
+
+    private void getBoilerPara()
+    {
+        showLoadingDialog();
+        try {
+            AjaxParams params = new AjaxParams();
+            params.put("screatname", MyApplication.sp.GetScreatMsg());
+            params.put("screatword", UserHelp.getPosttime());
+            params.put("sign", MD5Utils.encode(MD5Utils.encode(MyApplication.sp.GetScreatMsg()) + UserHelp.dateToStamp(UserHelp.getPosttime())));
+            params.put("serialnumber", serialnumber);
+            MyApplication.http.configTimeout(40000);
+            MyApplication.http.post(Api.GetBoilersPara, params, new AjaxCallBack<Object>()
+            {
+                @Override
+                public void onSuccess(Object o)
+                {
+                    super.onSuccess(o);
+                    hideLoadingDialog();
+                    try
+                    {
+                        JSONObject object = new JSONObject(o.toString());
+                        if (object.getString("resultcode").equals("0"))
+                        {
+                            list_para.clear();
+                            JSONArray oba = object.getJSONArray("data");
+                            for (int i = 0; i < oba.length(); i++)
+                            {
+                                JSONObject op = oba.getJSONObject(i);
+                                BoilersPara bp = new BoilersPara();
+                                bp.setAddr(op.getString("addr"));
+                                bp.setAddr_int(op.getString("paraaddr"));
+                                bp.setName(op.getString("name"));
+                                bp.setKind(op.getString("parakind"));
+                                bp.setLen(op.getString("paralen"));
+                                bp.setVisiable(op.getString("visiable"));
+                                bp.setType(op.getString("paratype"));
+                                bp.setUnit(op.getString("unit"));
+                                list_para.add(bp);
+                            }
+                            streamId = new String[list_para.size()];
+                            request();
+                        }
+                    }catch (Exception e)
+                    {
+                        Log.e("getBoilerPara", e.toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t, String strMsg)
+                {
+                    hideLoadingDialog();
+                    super.onFailure(t, strMsg);
+                }
+            });
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        }
+
+    private void request()
+    {
+        OneNetApi.setAppKey(apikey);
+        OneNetApi.querySingleDataStream(mDevice, "7002", new OneNetApiCallback()
+        {
+            @Override
+            public void onSuccess(String response)
+            {
+                try {
+                    JSONObject resp = new JSONObject(response);
+                    int errno = resp.getInt("errno");
+                    if (0 == errno)
+                    {
+                        JSONObject json = resp.getJSONObject("data");
+                        try
+                        {
+                            int j = 0;
+                            flag = json.getString("current_value");
+                            if ("0".equals(flag))
+                            {
+                                for (int i = 0; i < list_para.size(); i++)
+                                {
+                                    streamId[i] = list_para.get(i).getAddr_int();
+                                }
+                            }
+                            else if ("1".equals(flag))
+                            {
+                                for (BoilersPara boilersPara : list_para)
+                                {
+                                    if (!"2".equals(boilersPara.getType()))
+                                    {
+                                        streamId[j++] = boilersPara.getAddr_int();
+                                    }
+                                }
+                            }
+                            else if ("2".equals(flag))
+                            {
+                                for (BoilersPara boilersPara : list_para)
+                                {
+                                    if (!"1".equals(boilersPara.getType()))
+                                    {
+                                        streamId[j++] = boilersPara.getAddr_int();
+                                    }
+                                }
+                            }
+
+                        }catch (Exception e)
+                        {
+                            Log.e("request1", e.toString());
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < list_para.size(); i++)
+                        {
+                            streamId[i] = list_para.get(i).getAddr_int();
+                        }
+                    }
+                    showLoadingDialog();
+                    handler.postDelayed(runnable1, 2000); // 延迟2秒，;
+                } catch (JSONException e)
+                {
+                    Log.e("request2", e.toString());
+                }
+            }
+
+            @Override
+            public void onFailed(Exception e)
+            {
+                Log.e("request, onFailed", e.toString());
+            }
+        });
     }
 
     @Override
@@ -1088,6 +1234,14 @@ public class OperatingconditionsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 开关
+     * @param by
+     * @param flag
+     * @param str
+     * @param toasttrue
+     * @param toastfalse
+     */
     private void sendCommand(byte[] by, final int flag, final String str, final String toasttrue, final String toastfalse) {
         OneNetApi.setAppKey(apikey);
         OneNetApi.sendCmdToDevice(
@@ -1268,11 +1422,11 @@ public class OperatingconditionsActivity extends BaseActivity {
             }
             if (ispost) return;
             //name.clear();
-            String[] streamid = new String[list_para.size()];
-            for (int i = 0; i < list_para.size(); i++)
-                streamid[i] = list_para.get(i).getAddr_int();
+//            String[] streamid = new String[list_para.size()];
+//            for (int i = 0; i < list_para.size(); i++)
+//                streamid[i] = list_para.get(i).getAddr_int();
             OneNetApi.setAppKey(apikey);
-            OneNetApi.queryMultiDataStreams(mDevice, streamid, new OneNetApiCallback() {
+            OneNetApi.queryMultiDataStreams(mDevice, streamId, new OneNetApiCallback() {
                 public void onSuccess(String response) {
                     try {
                         JSONObject resp = new JSONObject(response);
@@ -1317,6 +1471,8 @@ public class OperatingconditionsActivity extends BaseActivity {
                             // threadBack =new Thread_back();
                             // new Thread(threadBack).start();
                         } else {
+                            String error = resp.getString("error");
+                            ToastUtil.showToast(OperatingconditionsActivity.this, error);
                             Message message = new Message();
                             message.what = 3;
                             handler.sendMessage(message);// 发送消息

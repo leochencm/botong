@@ -54,6 +54,8 @@ public class Api {
     public static String RelieveBindBoiler = PUBLIC + "RelieveBindBoiler";
     //    获取锅炉列表
     public static String GetBoilers = PUBLIC + "GetBoilers";
+    //获取锅炉列表
+    public static String GetBoilersList = PUBLIC + "GetBoilersList";
     //    获取锅炉参数
     public static String GetBoilersPara = PUBLIC + "GetBoilersPara";
     //是否在线

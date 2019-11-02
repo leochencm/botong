@@ -168,7 +168,7 @@ public class GuolulistActivity extends BaseActivity implements
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 String wifiname = "", conwifi = "";
-                Bundle bd = new Bundle();
+//                Bundle bd = new Bundle();
                 conwifi = NetUtil.getSSID(GuolulistActivity.this).substring(1, NetUtil.getSSID(GuolulistActivity.this).length() - 1);
                 final TextView sonview = (TextView) view.findViewById(R.id.txt_serialnumber);
                 TextView txt_workstate = (TextView) view.findViewById(R.id.txt_workstate);
@@ -188,13 +188,13 @@ public class GuolulistActivity extends BaseActivity implements
                         showStringToastMsg("请检查网络或等待网络稳定!");
                         return;
                     }
-                    bd.putSerializable("boiler", (Serializable) list.get(i).getPara());
+//                    bd.putSerializable("boiler", (Serializable) list.get(i).getPara());
                     Intent intent = new Intent(GuolulistActivity.this, OperatingconditionsActivity.class);
 
                     intent.putExtra("id", "3");
                     //intent.putExtra("serialnumber", sonview.getText().toString());
                     //intent.putExtra("showenable", list.get(i).getShowenable());
-                    intent.putExtras(bd);
+//                    intent.putExtras(bd);
                     //intent.putExtra("mDevice",mDeviceItem.get(i).getId());
                     startActivityForResult(intent, 0);
                     MyApplication.sp.setShowenable(sonview.getText().toString());
@@ -202,8 +202,8 @@ public class GuolulistActivity extends BaseActivity implements
                 } else {
                     Intent intent = new Intent(GuolulistActivity.this, OperatingconditionsActivity.class);
                     intent.putExtra("id", "3");
-                    bd.putSerializable("boiler", list.get(i).getPara());
-                    intent.putExtras(bd);
+//                    bd.putSerializable("boiler", list.get(i).getPara());
+//                    intent.putExtras(bd);
                     intent.putExtra("serialnumber", list.get(i).getSerialnumber());
                     //intent.putExtra("showenable", list.get(i).getShowenable());
                     intent.putExtra("oid", list.get(i).getOid());
@@ -446,7 +446,7 @@ public class GuolulistActivity extends BaseActivity implements
             params.put("sign", MD5Utils.encode(MD5Utils.encode(MyApplication.sp.GetScreatMsg()) + UserHelp.dateToStamp(UserHelp.getPosttime())));
             params.put("account", MyApplication.sp.GetMobile());
             MyApplication.http.configTimeout(40000);
-            MyApplication.http.post(Api.GetBoilers, params, new AjaxCallBack<Object>() {
+            MyApplication.http.post(Api.GetBoilersList, params, new AjaxCallBack<Object>() {
                 @Override
                 public void onSuccess(Object o) {
                     hideLoadingDialog();
@@ -460,7 +460,7 @@ public class GuolulistActivity extends BaseActivity implements
                             for (int i = 0; i < oba.length(); i++) {
                                 JSONObject ob = oba.getJSONObject(i);
                                 Boilers boilers = new Boilers();
-                                ArrayList<BoilersPara> listpara = new ArrayList<BoilersPara>();
+//                                ArrayList<BoilersPara> listpara = new ArrayList<BoilersPara>();
                                 boilers.setSerialnumber(ob.getString("serialnumber"));
                                 boilers.setModel(ob.getString("model"));
                                 //boilers.setWorkstate(ob.getString("workstate"));
@@ -473,23 +473,23 @@ public class GuolulistActivity extends BaseActivity implements
                                 boilers.setImage(ob.getString("image"));
                                 //boilers.setShowenable(ob.getJSONArray("showenable").toString());
                                 //boilers.setWifiname(ob.getString("wifiname"));
-                                JSONArray para = oba.getJSONObject(i).getJSONArray("para");
-                                for (int j = 0; j < para.length(); j++) {
-                                    JSONObject op = para.getJSONObject(j);
-                                    BoilersPara bp = new BoilersPara();
-                                    bp.setAddr(op.getString("addr"));
-                                    bp.setAddr_int(op.getString("paraaddr"));
-                                    bp.setName(op.getString("name"));
-                                    bp.setKind(op.getString("parakind"));
-                                    bp.setLen(op.getString("paralen"));
-                                    bp.setVisiable(op.getString("visiable"));
-                                    bp.setUnit(op.getString("unit"));
-                                    bp.setModel(boilers.getModel());
-                                    listpara.add(bp);
-                                }
+//                                JSONArray para = oba.getJSONObject(i).getJSONArray("para");
+//                                for (int j = 0; j < para.length(); j++) {
+//                                    JSONObject op = para.getJSONObject(j);
+//                                    BoilersPara bp = new BoilersPara();
+//                                    bp.setAddr(op.getString("addr"));
+//                                    bp.setAddr_int(op.getString("paraaddr"));
+//                                    bp.setName(op.getString("name"));
+//                                    bp.setKind(op.getString("parakind"));
+//                                    bp.setLen(op.getString("paralen"));
+//                                    bp.setVisiable(op.getString("visiable"));
+//                                    bp.setUnit(op.getString("unit"));
+//                                    bp.setModel(boilers.getModel());
+//                                    listpara.add(bp);
+//                                }
                                 bpara.deletepara(boilers.model);
-                                bpara.add(listpara);
-                                boilers.setPara(listpara);
+//                                bpara.add(listpara);
+//                                boilers.setPara(listpara);
                                 list.add(boilers);
                                 mgr.deletenews(boilers.serialnumber);
                             }
@@ -599,16 +599,6 @@ public class GuolulistActivity extends BaseActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1:
-//                //来自按钮1的请求，作相应业务处理
-//                Log.i("qwqwq","wqwqw");
-//                Log.e("serialnumber", "" + serialnumber);
-//                Intent intent1 = new Intent(GuolulistActivity.this, OperatingconditionsActivity.class);
-////                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent1.putExtra("id", "1");
-//                intent1.putExtra("serialnumber", serialnumber);
-//                startActivityForResult(intent1, 0);
-                break;
             case 0:
                 Log.i("default", "wqwqw");
 //                UID = bundle.getString("UID");

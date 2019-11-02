@@ -1,5 +1,6 @@
 package com.botongglcontroller.activity;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -106,6 +107,7 @@ public class SettingcanshuActivity extends BaseActivity {
 
         }
     };
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             // 要做的事情

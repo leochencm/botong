@@ -1,5 +1,6 @@
 package com.botongglcontroller.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -83,6 +84,7 @@ public class GuoluSeetingAdapter extends BaseAdapter {
         }
     };
     private ArrayList<BoilersPara> list = null;
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             // 要做的事情

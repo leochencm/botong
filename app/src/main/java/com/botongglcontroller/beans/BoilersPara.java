@@ -22,6 +22,7 @@ public class BoilersPara implements Serializable {
     public String len;
     public String value;
     public String model;
+    public String type;
     long time;
 
     public static long stringToLong(String strTime, String formatType)
@@ -136,4 +137,13 @@ public class BoilersPara implements Serializable {
         this.len = len;
     }
 
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
 }
